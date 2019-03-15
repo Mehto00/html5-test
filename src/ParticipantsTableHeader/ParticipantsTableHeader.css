@@ -1,0 +1,33 @@
+.participantsTableHeader {
+    background: #fff;
+    max-width: 912px;
+    height: 48px;
+    margin: 10px 0 0 0;
+    padding: 0 16px;
+    
+    display: flex;
+    flex-direction: row;
+  
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 500;
+  }
+  
+  .participantsTableHeader__col {
+    padding: 0 16px;
+  
+    flex: 2;
+    align-self: center;
+  }
+  
+  .participantsTableHeader__col__email {
+    flex: 3;
+  }
+  
+  .participantsTableHeader__col__update-delete {
+    margin: 0px 16px;
+    padding: 0px 0px 0px 16px;
+  
+    flex: 1;
+    text-align: end;
+  }

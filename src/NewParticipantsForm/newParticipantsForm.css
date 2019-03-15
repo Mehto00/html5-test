@@ -1,0 +1,33 @@
+.newParticipantsForm {
+    background: #fff;
+    padding: 16px;
+    
+    display: flex;
+    flex-direction: row;
+}
+
+.newParticipantsForm__input {
+    background: #EDEDED;
+    color: #505050;
+    height: 40px;
+    min-width: 90px;
+    
+    flex: 2;
+    margin-right: 16px;
+    padding-left: 16px;
+    box-sizing: content-box;
+    
+    font-size: 1.4rem;
+    border: 1px solid #EAEAEA;
+}
+
+.newParticipantsForm__input__email {
+    flex: 3;
+}
+
+.newParticipantsForm__submit {
+    min-width: 100px;
+    
+    flex: 1;
+    font-weight: bold;
+}
