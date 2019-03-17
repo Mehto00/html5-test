@@ -1,14 +1,14 @@
 import React from 'react';
-import { ReactComponent as DelSvg } from './del.svg';
-import { ReactComponent as EditSvg } from './edit.svg';
+import { ReactComponent as DelSvg } from '../../assets/del.svg';
+import { ReactComponent as EditSvg } from '../../assets/edit.svg';
 import './ParticipantsTableRow.css';
 
-const ParticipantsTableRow = () => {
+const ParticipantsTableRow = (props) => {
     return(
     <div className="ParticipantsTableRow">
-        <div className="ParticipantsTableRow__col">Name Surname</div>
-        <div className="ParticipantsTableRow__col ParticipantsTableRow__col__email">email@gmail.com</div>
-        <div className="ParticipantsTableRow__col">+358401234567</div>
+        <div className="ParticipantsTableRow__col">{props.name}</div>
+        <div className="ParticipantsTableRow__col ParticipantsTableRow__col__email">{props.email_address}</div>
+        <div className="ParticipantsTableRow__col">{props.phone_number}</div>
         <div className="ParticipantsTableRow__col ParticipantsTableRow__col__update-delete">
             <EditSvg className="ParticipantsTableRow__col__icons" />
             <DelSvg className="ParticipantsTableRow__col__icons" />
