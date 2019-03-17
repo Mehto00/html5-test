@@ -1,24 +1,25 @@
 .newParticipantsForm {
     background: #fff;
+    margin-top: 50px;
     padding: 16px;
-    
+
     display: flex;
     flex-direction: row;
 }
 
 .newParticipantsForm__input {
-    background: #EDEDED;
-    color: #505050;
+    background: #FAFAFA;
+    color: #909090;
     height: 40px;
     min-width: 90px;
-    
-    flex: 2;
     margin-right: 16px;
     padding-left: 16px;
+
+    flex: 2;
     box-sizing: content-box;
-    
-    font-size: 1.4rem;
     border: 1px solid #EAEAEA;
+
+    font-size: 1.1rem;
 }
 
 .newParticipantsForm__input__email {
@@ -26,8 +27,9 @@
 }
 
 .newParticipantsForm__submit {
+    background: #EDEDED;
+    color: #757575;
     min-width: 100px;
-    
     flex: 1;
     font-weight: bold;
 }

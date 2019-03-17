@@ -1,11 +1,33 @@
 body {
-  background: #EDEDED;
+  background: #FAFAFA;
 }
 
 .contentWrapper {
   color: #5C5C5C;
   max-width: 912px;
-  margin: 50px auto;
+  margin: 80px auto;
   padding: 0 32px;
 }
 
+.cancel {
+  background: #FAFAFA;
+  color: #07f;
+
+  height: 40px;
+  padding: 0 24px;
+
+  border: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.save {
+  background: #07f;
+  color: #fff;
+  height: 40px;
+  padding: 0 24px;
+
+  border: 0;
+  font-size: 16px;
+  font-weight: bold;
+}

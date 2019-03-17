@@ -1,0 +1,41 @@
+.ParticipantsTableRow {
+    background: #fff;
+    max-width: 912px;
+    height: 72px;
+    padding: 0 16px; 
+
+    display: flex;
+    
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+
+    border-bottom: 1px solid #EAEAEA;
+}
+
+.ParticipantsTableRow__col {
+    padding: 0 16px;
+  
+    flex: 2;
+    align-self: center;
+  }
+  
+  .ParticipantsTableRow__col__email {
+    flex: 3;
+  }
+  
+  .ParticipantsTableRow__col__update-delete {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 16px;
+    padding: 0px 0px 0px 16px;
+    
+    flex: 1;
+    text-align: end;
+  }
+
+  .ParticipantsTableRow__col__icons {
+    fill: #909090;  
+    width: 24px;
+    height: 24px;
+  }
