@@ -11,11 +11,13 @@ const ParticipantsTable = (props) => {
           
           {props.participants.map( (participant, index) =>
               <ParticipantsTableRow 
-                key= {index}
+                key = {index}
+                index = {index}
                 id = {participant.id}
                 name = {participant.name}
                 email_address = {participant.email_address}
                 phone_number = {participant.phone_number}
+                removeParticipantHandler ={props.removeParticipantHandler}
               />
             )}
       </div>

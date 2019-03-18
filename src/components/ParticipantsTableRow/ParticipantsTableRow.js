@@ -4,6 +4,7 @@ import { ReactComponent as EditSvg } from '../../assets/edit.svg';
 import './ParticipantsTableRow.css';
 
 const ParticipantsTableRow = (props) => {
+    
     return(
     <div className="ParticipantsTableRow">
         <div className="ParticipantsTableRow__col">{props.name}</div>
@@ -11,7 +12,7 @@ const ParticipantsTableRow = (props) => {
         <div className="ParticipantsTableRow__col">{props.phone_number}</div>
         <div className="ParticipantsTableRow__col ParticipantsTableRow__col__update-delete">
             <EditSvg className="ParticipantsTableRow__col__icons" />
-            <DelSvg className="ParticipantsTableRow__col__icons" />
+            <DelSvg className="ParticipantsTableRow__col__icons" onClick={() => props.removeParticipantHandler(props.index)} />
             <img src="../public/del.svg" alt=""/>
         </div>    
       </div>
