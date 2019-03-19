@@ -15,9 +15,11 @@ const ParticipantsTable = (props) => {
                 index = {index}
                 id = {participant.id}
                 name = {participant.name}
+                editButtonsShow = {props.editButtonsShow}
                 email_address = {participant.email_address}
                 phone_number = {participant.phone_number}
-                removeParticipantHandler ={props.removeParticipantHandler}
+                editButtonsShowHandler = {props.editButtonsShowHandler}
+                removeParticipantHandler = {props.removeParticipantHandler}
               />
             )}
       </div>

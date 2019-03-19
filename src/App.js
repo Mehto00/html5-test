@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
+
 import './App.css';
 
 import Header from './components/Header/Header'
 import NewParticipantsForm from './components/NewParticipantsForm/NewParticipantsForm'
 import Participants from './components/Participants/Participants'
 
-
 class App extends Component {
   constructor(props) {
     super(props);
     
     this.state = {
-      participantObj : {
-        name: "",
-        email_address: "",
-        phone_number: ""
+      formData: {
+        name: '',
+        email_address: '',
+        phone_number: ''
       },
-
+      
+      editButtonsShow: false,
+      
       participants : [
         {
           id: 1,
@@ -50,29 +52,13 @@ class App extends Component {
         }
       ]
     }
-
-    this.handleNameChange = this.handleNameChange.bind(this);
-    this.handleEmailChange = this.handleEmailChange.bind(this);
-    this.handlePhonenumberChange = this.handlePhonenumberChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.editButtonsShowHandler = this.editButtonsShowHandler.bind(this);
   }
 
-  handleNameChange(event) {
-    this.setState({[this.state.participantObj.name]: event.target.value});
-  }
-  handleEmailChange(event) {
-    this.setState({[this.state.participantObj.email_address]: event.target.value});
-  }
-  handlePhonenumberChange(event) {
-    this.setState({[this.state.participantObj.phone_number]: event.target.value});
-  }
-
-  handleSubmit(event) {
-    const name = this.state.participantObj.name;
-    const email_address = this.state.participantObj.email_address;
-    const phone_number = this.state.participantObj.phone_number;
-    this.newParticipantHandler(name, email_address, phone_number)
-    event.preventDefault();
+  editButtonsShowHandler() {
+    this.setState(state => ({
+      editButtonsShow: !state.editButtonsShow
+    }));
   }
 
   newParticipantHandler = (name, email_address, phone_number) => {
@@ -99,38 +85,20 @@ class App extends Component {
         <div className="contentWrapper">
           <h1>List of participants</h1>
 
-          <form className="newParticipantsForm" onSubmit={this.handleSubmit}>
-            <input className="newParticipantsForm__input"
-                    placeholder="Full name"
-                    type="text" 
-                    name="name"
-                    value= {this.state.participantObj.name}
-                    onChange= {this.handleNameChange}
-                    required/>
-            
-            <input className="newParticipantsForm__input newParticipantsForm__input__email"
-                    placeholder="E-mail address" 
-                    type="email" 
-                    name="email_address" 
-                    value= {this.state.participantObj.email_address}
-                    onChange= {this.handleEmailChange}
-                    required/>
+          <NewParticipantsForm 
+          name={this.state.formData.name}
+          email={this.state.formData.email_address}
+          phone_number={this.state.formData.phone_number}
+          newParticipantHandler={this.newParticipantHandler}
+          />
 
-            <input className="newParticipantsForm__input"
-                    placeholder="Phone number"
-                    type="tel" name="phone_number"
-                    value= {this.state.participantObj.phone_number}
-                    onChange= {this.handlePhonenumberChange}
-                    required/>
+          <Participants 
+          participants={this.state.participants}
+          editButtonsShow={this.state.editButtonsShow}
+          editButtonsShowHandler={this.editButtonsShowHandler}
+          removeParticipantHandler={this.removeParticipantHandler}
+          />
 
-            <input className="newParticipantsForm__input newParticipantsForm__submit"
-                    type="submit" value=" Add new"/>
-          </form>
-
-          <Participants participants={this.state.participants} removeParticipantHandler={this.removeParticipantHandler}/>
-
-          <button className="cancel">Cancel</button>
-          <button className="save">Save</button>
         </div>
       </div>
     );
