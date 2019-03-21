@@ -18,6 +18,7 @@ class App extends Component {
       },
       
       editButtonsShow: false,
+      target: '',
       
       participants : [
         {
@@ -52,7 +53,9 @@ class App extends Component {
         }
       ]
     }
+    
     this.editButtonsShowHandler = this.editButtonsShowHandler.bind(this);
+    this.targetHandler = this.targetHandler.bind(this);
   }
 
   editButtonsShowHandler() {
@@ -61,9 +64,17 @@ class App extends Component {
     }));
   }
 
+  targetHandler(eventTarget) {
+    this.setState(state => ({
+      target: eventTarget
+    }));
+  }
+
   newParticipantHandler = (name, email_address, phone_number) => {
     const participants = [...this.state.participants]
+    const id = this.state.participants.length + 1;
     const newParticipant = {
+      id: id,
       name: name,
       email_address: email_address,
       phone_number: phone_number,
@@ -94,7 +105,9 @@ class App extends Component {
 
           <Participants 
           participants={this.state.participants}
+          target={this.state.target}
           editButtonsShow={this.state.editButtonsShow}
+          targetHandler={this.targetHandler}
           editButtonsShowHandler={this.editButtonsShowHandler}
           removeParticipantHandler={this.removeParticipantHandler}
           />
