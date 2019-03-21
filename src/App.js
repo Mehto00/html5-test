@@ -30,8 +30,8 @@ class App extends Component {
         {
           id: 2,
           name: "Vellu Ketola",
-          email_address: "joujoujou@yahoo.org",
-          phone_number: "666666666",
+          email_address: "jippii@yahoo.org",
+          phone_number: "0401234567",
         },
         {
           id: 3,
@@ -43,19 +43,21 @@ class App extends Component {
           id: 4,
           name: "Wayne Gretzy",
           email_address: "jippii@yahoo.org",
-          phone_number: "999999999",
+          phone_number: "0401234567",
         },
         {
           id: 5,
           name: "Väinö Gretzy",
           email_address: "jippii@yahoo.org",
-          phone_number: "999999999",
+          phone_number: "0401234567",
         }
       ]
     }
     
     this.editButtonsShowHandler = this.editButtonsShowHandler.bind(this);
-    this.targetHandler = this.targetHandler.bind(this);
+    this.targetRowHandler = this.targetRowHandler.bind(this);
+    this.compareBy.bind(this);
+    this.sortBy.bind(this);
   }
 
   editButtonsShowHandler() {
@@ -64,10 +66,24 @@ class App extends Component {
     }));
   }
 
-  targetHandler(eventTarget) {
+  targetRowHandler(eventTarget) {
     this.setState(state => ({
       target: eventTarget
     }));
+  }
+
+  compareBy(key) {
+    return function (a, b) {
+      if (a[key] < b[key]) return -1;
+      if (a[key] > b[key]) return 1;
+      return 0;
+    };
+  }
+
+  sortBy(key) {
+    let arrayCopy = [...this.state.participants];
+    arrayCopy.sort(this.compareBy(key));
+    this.setState({data: arrayCopy});
   }
 
   newParticipantHandler = (name, email_address, phone_number) => {
@@ -80,6 +96,17 @@ class App extends Component {
       phone_number: phone_number,
     }
     participants.push(newParticipant)
+    this.setState({participants : participants})
+  };
+
+  editParticipantHandler = (index, name, email_address, phone_number) => {
+    const participants = [...this.state.participants];
+    const participant = participants[index];
+    console.log(participant);
+    if (name !== undefined) participant.name = name;
+    if (email_address !== undefined) participant.email_address = email_address;
+    if (phone_number !== undefined) participant.phone_number = phone_number;
+    
     this.setState({participants : participants})
   };
 
@@ -106,9 +133,11 @@ class App extends Component {
           <Participants 
           participants={this.state.participants}
           target={this.state.target}
+          sortBy={this.sortBy}
           editButtonsShow={this.state.editButtonsShow}
-          targetHandler={this.targetHandler}
+          targetRowHandler={this.targetRowHandler}
           editButtonsShowHandler={this.editButtonsShowHandler}
+          editParticipantHandler={this.editParticipantHandler}
           removeParticipantHandler={this.removeParticipantHandler}
           />
 

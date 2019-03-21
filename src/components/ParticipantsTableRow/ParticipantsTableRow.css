@@ -14,14 +14,6 @@
 
 .ParticipantsTableRow__col {
   align-self: center;
-}
-
-.ParticipantsTableRow__col_name {
-  padding-left: 24px;
-  flex: 1;
-}
-
-.ParticipantsTableRow__col__email {
   padding-left: 24px;
   flex: 1;
 }
@@ -29,11 +21,28 @@
 .ParticipantsTableRow__col__update-delete {
   display: flex;
   justify-content: flex-end;
-  margin: 0px 16px;
+  margin: 0px  16px 0px 0px;
   padding: 0px 0px 0px 16px;
-
   flex: 1;
   text-align: end;
+}
+
+.ParticipantsTableRow__col__input {
+  background: #FAFAFA;
+  color: #909090;
+  height: 40px;
+  margin-right: 8px;
+  padding-left: 16px;
+
+  flex: 2;
+  box-sizing: content-box;
+  border: 1px solid #EAEAEA;
+
+  font-size: 0.9rem;
+}
+
+.newParticipantsForm__input__email {
+  flex: 3;
 }
 
 .ParticipantsTableRow__col__icons {

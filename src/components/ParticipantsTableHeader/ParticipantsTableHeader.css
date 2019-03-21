@@ -6,7 +6,7 @@
   padding: 0 16px;
 
   display: flex;
-  flex-direction: row;
+  align-items: center;
 
   font-size: 14px;
   line-height: 16px;
@@ -17,21 +17,20 @@
 
 .participantsTableHeader__col {
   align-self: center;
-}
-
-.participantsTableHeader__col__name {
-  padding: 0 30px 0 8px;
+  padding-left: 8px;
   flex: 1;
-  align-self: center;
 }
 
 .participantsTableHeader__col__email {
-  flex: 1;
+  margin-left: 26px;
 }
+
+.participantsTableHeader__col__phone {
+  margin-left: 32px;
+} 
 
 .participantsTableHeader__col__update-delete {
   margin: 0px 16px;
   padding: 0px 0px 0px 16px;
   flex: 1;
-
 }
