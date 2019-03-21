@@ -1,22 +1,25 @@
 import React, { Component } from 'react';
+
 import './App.css';
 
 import Header from './components/Header/Header'
 import NewParticipantsForm from './components/NewParticipantsForm/NewParticipantsForm'
 import Participants from './components/Participants/Participants'
 
-
 class App extends Component {
   constructor(props) {
     super(props);
     
     this.state = {
-      participantObj : {
-        name: "",
-        email_address: "",
-        phone_number: ""
+      formData: {
+        name: '',
+        email_address: '',
+        phone_number: ''
       },
-
+      
+      editButtonsShow: false,
+      target: '',
+      
       participants : [
         {
           id: 1,
@@ -27,8 +30,8 @@ class App extends Component {
         {
           id: 2,
           name: "Vellu Ketola",
-          email_address: "joujoujou@yahoo.org",
-          phone_number: "666666666",
+          email_address: "jippii@yahoo.org",
+          phone_number: "0401234567",
         },
         {
           id: 3,
@@ -40,49 +43,70 @@ class App extends Component {
           id: 4,
           name: "Wayne Gretzy",
           email_address: "jippii@yahoo.org",
-          phone_number: "999999999",
+          phone_number: "0401234567",
         },
         {
           id: 5,
           name: "Väinö Gretzy",
           email_address: "jippii@yahoo.org",
-          phone_number: "999999999",
+          phone_number: "0401234567",
         }
       ]
     }
-
-    this.handleNameChange = this.handleNameChange.bind(this);
-    this.handleEmailChange = this.handleEmailChange.bind(this);
-    this.handlePhonenumberChange = this.handlePhonenumberChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    
+    this.editButtonsShowHandler = this.editButtonsShowHandler.bind(this);
+    this.targetRowHandler = this.targetRowHandler.bind(this);
+    this.compareBy.bind(this);
+    this.sortBy.bind(this);
   }
 
-  handleNameChange(event) {
-    this.setState({[this.state.participantObj.name]: event.target.value});
-  }
-  handleEmailChange(event) {
-    this.setState({[this.state.participantObj.email_address]: event.target.value});
-  }
-  handlePhonenumberChange(event) {
-    this.setState({[this.state.participantObj.phone_number]: event.target.value});
+  editButtonsShowHandler() {
+    this.setState(state => ({
+      editButtonsShow: !state.editButtonsShow
+    }));
   }
 
-  handleSubmit(event) {
-    const name = this.state.participantObj.name;
-    const email_address = this.state.participantObj.email_address;
-    const phone_number = this.state.participantObj.phone_number;
-    this.newParticipantHandler(name, email_address, phone_number)
-    event.preventDefault();
+  targetRowHandler(eventTarget) {
+    this.setState(state => ({
+      target: eventTarget
+    }));
+  }
+
+  compareBy(key) {
+    return function (a, b) {
+      if (a[key] < b[key]) return -1;
+      if (a[key] > b[key]) return 1;
+      return 0;
+    };
+  }
+
+  sortBy(key) {
+    let arrayCopy = [...this.state.participants];
+    arrayCopy.sort(this.compareBy(key));
+    this.setState({data: arrayCopy});
   }
 
   newParticipantHandler = (name, email_address, phone_number) => {
     const participants = [...this.state.participants]
+    const id = this.state.participants.length + 1;
     const newParticipant = {
+      id: id,
       name: name,
       email_address: email_address,
       phone_number: phone_number,
     }
     participants.push(newParticipant)
+    this.setState({participants : participants})
+  };
+
+  editParticipantHandler = (index, name, email_address, phone_number) => {
+    const participants = [...this.state.participants];
+    const participant = participants[index];
+    console.log(participant);
+    if (name !== undefined) participant.name = name;
+    if (email_address !== undefined) participant.email_address = email_address;
+    if (phone_number !== undefined) participant.phone_number = phone_number;
+    
     this.setState({participants : participants})
   };
 
@@ -99,38 +123,24 @@ class App extends Component {
         <div className="contentWrapper">
           <h1>List of participants</h1>
 
-          <form className="newParticipantsForm" onSubmit={this.handleSubmit}>
-            <input className="newParticipantsForm__input"
-                    placeholder="Full name"
-                    type="text" 
-                    name="name"
-                    value= {this.state.participantObj.name}
-                    onChange= {this.handleNameChange}
-                    required/>
-            
-            <input className="newParticipantsForm__input newParticipantsForm__input__email"
-                    placeholder="E-mail address" 
-                    type="email" 
-                    name="email_address" 
-                    value= {this.state.participantObj.email_address}
-                    onChange= {this.handleEmailChange}
-                    required/>
+          <NewParticipantsForm 
+          name={this.state.formData.name}
+          email={this.state.formData.email_address}
+          phone_number={this.state.formData.phone_number}
+          newParticipantHandler={this.newParticipantHandler}
+          />
 
-            <input className="newParticipantsForm__input"
-                    placeholder="Phone number"
-                    type="tel" name="phone_number"
-                    value= {this.state.participantObj.phone_number}
-                    onChange= {this.handlePhonenumberChange}
-                    required/>
+          <Participants 
+          participants={this.state.participants}
+          target={this.state.target}
+          sortBy={this.sortBy}
+          editButtonsShow={this.state.editButtonsShow}
+          targetRowHandler={this.targetRowHandler}
+          editButtonsShowHandler={this.editButtonsShowHandler}
+          editParticipantHandler={this.editParticipantHandler}
+          removeParticipantHandler={this.removeParticipantHandler}
+          />
 
-            <input className="newParticipantsForm__input newParticipantsForm__submit"
-                    type="submit" value=" Add new"/>
-          </form>
-
-          <Participants participants={this.state.participants} removeParticipantHandler={this.removeParticipantHandler}/>
-
-          <button className="cancel">Cancel</button>
-          <button className="save">Save</button>
         </div>
       </div>
     );
