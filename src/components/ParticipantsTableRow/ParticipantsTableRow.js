@@ -19,7 +19,6 @@ const ParticipantsTableRow = (props) => {
   const handleChangePhonenumber = e => {
     setPhonenumber(e.target.value)
   }
-
   const handleSubmit = event => {
     props.editParticipantHandler(props.target, name, email_address, phone_number)
     props.editButtonsShowHandler(); 
@@ -27,9 +26,10 @@ const ParticipantsTableRow = (props) => {
   }
     
     return(
-    <div className="ParticipantsTableRow">
-      <div className="ParticipantsTableRow__col ParticipantsTableRow__col_name">
-        {props.editButtonsShow && (props.index == props.target) ? (
+    <div className="ParticipantsTableRow" key={props.index}>
+      <div className="ParticipantsTableRow__col ParticipantsTableRow__col__content">
+      {/* show input field if edit button clicked */}
+        {props.editButtonsToggle && (props.index === props.target) ? (
           <input className="ParticipantsTableRow__col__input"
           placeholder={props.name}
           type="text" 
@@ -38,13 +38,15 @@ const ParticipantsTableRow = (props) => {
           onChange={handleChangeName}
           required/>
           ):(
+        // otherwise show the value itself
           props.name
           )
         }
       </div>
       
-      <div className="ParticipantsTableRow__col ParticipantsTableRow__col__email">
-        {props.editButtonsShow && (props.index == props.target) ? (
+      <div className="ParticipantsTableRow__col ParticipantsTableRow__col__content">
+      {/* show input field if edit button clicked */}
+        {props.editButtonsToggle && (props.index === props.target) ? (
           <input className="ParticipantsTableRow__col__input ParticipantsTableRow__col__input__email"
           placeholder={props.email_address} 
           type="email" 
@@ -53,31 +55,36 @@ const ParticipantsTableRow = (props) => {
           onChange={handleChangeEmail}
           required/>
           ): (
+        // otherwise show the value itself
           props.email_address
           )
         }
       </div>
 
-      <div className="ParticipantsTableRow__col">
-        {props.editButtonsShow && (props.index == props.target) ? (
-          <input className="ParticipantsTableRow__col__input"
+      <div className="ParticipantsTableRow__col ParticipantsTableRow__col__content">
+      {/* show input field if edit button clicked */}
+        {props.editButtonsToggle && (props.index === props.target) ? (
+          <input className="ParticipantsTableRow__col__input ParticipantsTableRow__col__input__number"
           placeholder={props.phone_number}
           type="number" name="phone_number"
           value={phone_number || ""}
           onChange={handleChangePhonenumber}
           required/>
           ): (
+        // otherwise show the value itself
           props.phone_number
           )
         }
       </div>
 
-       {props.editButtonsShow && (props.index == props.target) ? (
+      {/* show cancel and save buttons if edit button clicked */}
+       {props.editButtonsToggle && (props.index === props.target) ? (
           <div className="ParticipantsTableRow__col ParticipantsTableRow__col__update-delete">
-            <button className="ParticipantsTableRow__col__cancelBtn" onClick={props.editButtonsShowHandler}>Cancel</button>
+            <button className="ParticipantsTableRow__col__cancelBtn" onClick={props.editButtonsShowHandler}>Cancel</button> 
             <button className="ParticipantsTableRow__col__saveBtn" onClick={handleSubmit}>Save</button>
           </div>
         ) : (
+        // else show edit and delete buttons 
           <div className="ParticipantsTableRow__col ParticipantsTableRow__col__update-delete" data-key={props.index}>
             <EditSvg className="ParticipantsTableRow__col__icons" onClick={(e) => {
               props.editButtonsShowHandler(); 
