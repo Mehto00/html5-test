@@ -1,12 +1,15 @@
+.participantsTableWrapper{
+  display: flex;
+} 
+
 .participantsTableHeader {
   background: #fff;
-  max-width: 912px;
+  width: 100%;
   height: 48px;
   margin: 10px 0 0 0;
   padding: 0 16px;
 
   display: flex;
-  align-items: center;
 
   font-size: 14px;
   line-height: 16px;
@@ -17,20 +20,16 @@
 
 .participantsTableHeader__col {
   align-self: center;
-  padding-left: 8px;
-  flex: 1;
 }
 
-.participantsTableHeader__col__email {
-  margin-left: 26px;
+.participantsTableHeader__col__content { 
+  flex: 1 1 29%;
 }
 
-.participantsTableHeader__col__phone {
-  margin-left: 32px;
-} 
+.participantsTableHeader__col__content:first-of-type {
+  margin-left: 10px;
+}
 
-.participantsTableHeader__col__update-delete {
-  margin: 0px 16px;
-  padding: 0px 0px 0px 16px;
-  flex: 1;
+.participantsTableHeader__col__editDel {
+  flex: 1 1 13%;
 }
