@@ -12,6 +12,11 @@ class App extends Component {
     super(props);
     
     this.state = {
+      formData: {
+        name: '',
+        email_address: '',
+        phone_number: ''
+      },
       
       editButtonsToggle: false,
       sortByToggle: false,
@@ -24,13 +29,32 @@ class App extends Component {
       
       target: '',
       
-      participants : participantsData
+      participants: participantsData
     }
+
+    this.inputChangeHandler = this.inputChangeHandler.bind(this)
+    this.submitHandler = this.submitHandler.bind(this);
     
     this.editButtonsShowHandler = this.editButtonsShowHandler.bind(this);
     this.targetRowHandler = this.targetRowHandler.bind(this);
+    
     this.compareBy = this.compareBy.bind(this);
     this.sortBy = this.sortBy.bind(this);
+  }
+
+  inputChangeHandler = event => {
+    this.setState({formData: {
+      [event.target.name] : event.target.value
+    }
+    })
+  }
+
+  submitHandler = event => {
+    event.preventDefault();
+    console.log(this.state.formData.name);
+    console.log(this.state.formData.email_address);
+    console.log(this.state.formData.phone_number);
+    // this.props.newParticipantHandler(this.state.name, this.state.email_address, this.state.phone_number)
   }
 
   editButtonsShowHandler() {
@@ -38,7 +62,6 @@ class App extends Component {
       editButtonsToggle: !state.editButtonsToggle
     }));
   }
-
   targetRowHandler(eventTarget) {
     this.setState({
       target: eventTarget
@@ -52,7 +75,6 @@ class App extends Component {
       return 0;
     };
   }
-
   sortBy(key, toggle) {
     const participants = [...this.state.participants]
 
@@ -80,8 +102,18 @@ class App extends Component {
     );
   }
 
-  
-
+  newParticipantHandler = (name, email_address, phone_number) => {
+    const participants = [...this.state.participants]
+    const id = this.state.participants.length + 1;
+    const newParticipant = {
+      id: id,
+      name: name,
+      email_address: email_address,
+      phone_number: phone_number,
+    }
+    participants.push(newParticipant)
+    this.setState({participants : participants})
+  };
   editParticipantHandler = (index, name, email_address, phone_number) => {
     const participants = [...this.state.participants];
     const participant = participants[index];
@@ -92,7 +124,6 @@ class App extends Component {
     
     this.setState({participants : participants})
   };
-
   removeParticipantHandler = i => {
     const participants = [...this.state.participants]
     participants.splice(i, 1)
@@ -110,10 +141,14 @@ class App extends Component {
           <NewParticipantsForm 
           formData={this.state.formData}
           newParticipantHandler={this.newParticipantHandler}
+
+          submitHandler={this.submitHandler}
+          inputChangeHandler={this.inputChangeHandler}
           />
 
           <Participants 
           participants={this.state.participants}
+          
           shortArrowStatus={this.state.shortArrowStatus}
           sortByToggle={this.state.sortByToggle}
           sortBy={this.sortBy}
