@@ -25,7 +25,7 @@ const participantsTableHeader = (props) => {
         <span key='1' style={hoverStyling}>Name</span> {(props.shortArrowStatus.showNameArrow) ? (props.sortByToggle ? <ArrowDownSvg style={arrowStyle} /> :  <ArrowUpSvg  style={arrowStyle} />) : "" /* if showArrow property is true validates the sortByToggle property to display up or down arrow. Otherwise "" */ }
       </div>
       
-      <div className="participantsTableHeader__col participantsTableHeader__col__content" onClick={() => props.sortBy('email_address', props.sortByToggle)}>
+      <div className="participantsTableHeader__col participantsTableHeader__col__content participantsTableHeader__col__content__email" onClick={() => props.sortBy('email_address', props.sortByToggle)}>
         <span key='2' style={hoverStyling}>Email adress</span> {(props.shortArrowStatus.showEmailArrow) ? (props.sortByToggle ? <ArrowDownSvg style={arrowStyle} /> :  <ArrowUpSvg  style={arrowStyle} />) : "" /* if showArrow property is true validates the sortByToggle property to display up or down arrow. Otherwise "" */ }
       </div>
       

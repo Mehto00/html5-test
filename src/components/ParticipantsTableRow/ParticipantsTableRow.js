@@ -44,7 +44,7 @@ const ParticipantsTableRow = (props) => {
         }
       </div>
       
-      <div className="ParticipantsTableRow__col ParticipantsTableRow__col__content">
+      <div className="ParticipantsTableRow__col ParticipantsTableRow__col__content ParticipantsTableRow__col__content__email">
       {/* show input field if edit button clicked */}
         {props.editButtonsToggle && (props.index === props.target) ? (
           <input className="ParticipantsTableRow__col__input ParticipantsTableRow__col__input__email"

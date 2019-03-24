@@ -23,7 +23,12 @@
 }
 
 .participantsTableHeader__col__content { 
-  flex: 1 1 29%;
+  flex: 1 1 25%;
+  margin-left: -8px;
+}
+
+.participantsTableHeader__col__content__email {
+  flex: 1 1 40%;
 }
 
 .participantsTableHeader__col__content:first-of-type {
@@ -31,5 +36,5 @@
 }
 
 .participantsTableHeader__col__editDel {
-  flex: 1 1 13%;
+  flex: 1 1 10%;
 }
