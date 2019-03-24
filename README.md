@@ -2,6 +2,8 @@
 
 This is a demo project to demonstrate my current skill level.
 
+You can check out the app live from here: https://mehto-html5-test.herokuapp.com/
+
 The project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Install
