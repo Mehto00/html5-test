@@ -18,13 +18,11 @@ const NewParticipantsForm = props => {
   }
 
   const handleSubmit = event => {
-    props.newParticipantHandler(name, email_address, phone_number)
     event.preventDefault()
-    
+    props.newParticipantHandler(name, email_address, phone_number)
   }
 
     return (
-      
       <form className="newParticipantsForm" onSubmit={handleSubmit}>
       <input className="newParticipantsForm__input"
               placeholder="Full name"
@@ -52,7 +50,6 @@ const NewParticipantsForm = props => {
               type="submit" value=" Add new"/>
     </form>
     )
-
 }
 
 export default NewParticipantsForm;

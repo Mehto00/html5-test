@@ -27,13 +27,12 @@ class App extends Component {
         showPhoneArrow: false,
       },
       
-      target: '',
-      
       participants : participantsData
     }
     
     this.editButtonsShowHandler = this.editButtonsShowHandler.bind(this);
     this.targetRowHandler = this.targetRowHandler.bind(this);
+    
     this.compareBy = this.compareBy.bind(this);
     this.sortBy = this.sortBy.bind(this);
   }
@@ -66,9 +65,9 @@ class App extends Component {
     const showPhoneArrow  =  (key === 'phone_number') ? (true) : (false)
 
     if (toggle === true) {
-      participants.sort(this.compareBy(key));
+      participants.sort(this.compareBy(key)).reverse();
     } else {
-      participants.sort(this.compareBy(key)).reverse();;
+      participants.sort(this.compareBy(key));;
     }
      
 
@@ -94,7 +93,7 @@ class App extends Component {
       email_address: email_address,
       phone_number: phone_number,
     }
-    participants.push(newParticipant)
+    participants.push(newParticipant);
     this.setState({participants : participants})
   };
 
@@ -114,7 +113,7 @@ class App extends Component {
     participants.splice(i, 1)
     this.setState({participants : participants})
   };
-  
+ 
   render() {
     return (
       <div className="App">
