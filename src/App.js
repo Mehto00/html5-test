@@ -12,11 +12,6 @@ class App extends Component {
     super(props);
     
     this.state = {
-      formData: {
-        name: '',
-        email_address: '',
-        phone_number: ''
-      },
       
       editButtonsToggle: false,
       sortByToggle: false,
@@ -85,18 +80,7 @@ class App extends Component {
     );
   }
 
-  newParticipantHandler = (name, email_address, phone_number) => {
-    const participants = [...this.state.participants]
-    const id = this.state.participants.length + 1;
-    const newParticipant = {
-      id: id,
-      name: name,
-      email_address: email_address,
-      phone_number: phone_number,
-    }
-    participants.push(newParticipant)
-    this.setState({participants : participants})
-  };
+  
 
   editParticipantHandler = (index, name, email_address, phone_number) => {
     const participants = [...this.state.participants];
