@@ -24,7 +24,7 @@ const NewParticipantsForm = props => {
 
     return (
       <form className="newParticipantsForm" onSubmit={handleSubmit}>
-      <input className="newParticipantsForm__input"
+      <input className="newParticipantsForm__input newParticipantsForm__input__name"
               placeholder="Full name"
               type="text" 
               name="name"

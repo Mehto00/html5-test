@@ -10,6 +10,7 @@
   padding: 0 16px;
 
   display: flex;
+  flex-wrap: wrap;
 
   font-size: 14px;
   line-height: 16px;
@@ -18,23 +19,80 @@
   border-bottom: 1px solid #EAEAEA;
 }
 
+.participantsTableHeader__FirstRow {
+  flex: 1 1 65%;
+  display: flex;
+}
+
+.participantsTableHeader__SecondRow {
+  flex: 1 1 35%;
+  display: flex;
+}
+
 .participantsTableHeader__col {
   align-self: center;
+  text-align: center;
 }
 
 .participantsTableHeader__col__content { 
   flex: 1 1 25%;
-  margin-left: -8px;
 }
 
-.participantsTableHeader__col__content__email {
-  flex: 1 1 40%;
+.participantsTableHeader__col__content__name {
+  margin-left: 24px;
 }
 
-.participantsTableHeader__col__content:first-of-type {
-  margin-left: 10px;
+@media only screen and (min-width: 500px) {
+  .participantsTableHeader {
+    padding: 0;
+  }
 }
 
-.participantsTableHeader__col__editDel {
-  flex: 1 1 10%;
+@media only screen and (min-width: 740px) {
+  .participantsTableHeader__FirstRow {
+    flex: 1 1 55%;
+    display: flex;
+  }
+
+  .participantsTableHeader__SecondRow {
+    flex: 1 1 45%;
+    display: flex;
+  }
+
+  .participantsTableHeader__col {
+    text-align: left;
+  }
+  
+  .participantsTableHeader__col__content__email {
+    margin-left: -65px;
+  }
+}
+
+@media only screen and (min-width: 912px) {
+  .participantsTableHeader__FirstRow {
+    flex: 1 1 55%;
+    display: flex;
+  }
+
+  .participantsTableHeader__SecondRow {
+    flex: 1 1 45%;
+    display: flex;
+  }
+
+  .participantsTableHeader__col {
+    align-self: center;
+  }
+
+  .participantsTableHeader__col__content { 
+    flex: 1 1 25%;
+  }
+
+  .participantsTableHeader__col__content__email {
+    margin-left: -125px;
+  }
+
+  .participantsTableHeader__col__editDel {
+    flex: 1 1 10%;
+  }
+  
 }
