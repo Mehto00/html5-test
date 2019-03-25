@@ -1,9 +1,10 @@
 .ParticipantsTableRow {
   background: #fff;
   width: 100%;
-  height: 72px;
+  height: 240px;
 
   display: flex;
+  flex-wrap: wrap;
 
   font-size: 16px;
   line-height: 24px;
@@ -12,27 +13,38 @@
   border-bottom: 1px solid #EAEAEA;
 }
 
+.ParticipantsTableRow__firstRow {
+  flex: 1 1 100%;
+
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.ParticipantsTableRow__secondRow {
+  flex: 1 1 100%;
+
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  
+}
+
 .ParticipantsTableRow__col {
   display: flex;
   align-self: center;
+  justify-content: center;
 }
 
 .ParticipantsTableRow__col__content {
-  flex: 1 1 25%;
-}
-
-.ParticipantsTableRow__col__content__email {
-  flex: 1 1 40%;
-}
-
-.ParticipantsTableRow__col__content:first-of-type {
-  margin-left: 24px;
+  flex: 1 1 100%;
+  width: 100%;
 }
 
 .ParticipantsTableRow__col__update-delete {
-  flex-flow: row;
-  margin-right: 16px;
-  flex: 1 1 10%;
+  width: 100%;
+  /* margin-right: 16px; */
+  
 }
 
 .ParticipantsTableRow__col__input {
@@ -40,7 +52,6 @@
   color: #909090;
   height: 40px;
   width: 135px;
-  margin-left: -16px;
   padding: 0 16px;
 
   box-sizing: content-box;
@@ -49,20 +60,19 @@
   font-size: 1rem;
 }
 
-.ParticipantsTableRow__col__input__email {
-  width: 260px;
-  margin-left: -3px;
-}
-
-.ParticipantsTableRow__col__input__number {
-  margin-left: 10px;
-}
-
 .ParticipantsTableRow__col__icons {
   fill: #909090;
   width: 24px;
   height: 24px;
   margin-right: 24px;
+}
+
+.ParticipantsTableRow__col__buttons {
+  display: flex;
+  flex: 1 1 35%;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .ParticipantsTableRow__col__cancelBtn {
@@ -87,4 +97,148 @@
   border: 0;
   font-size: 16px;
   font-weight: bold;
+}
+
+
+@media only screen and (min-width: 500px) {
+  .ParticipantsTableRow {
+    height: 120px;
+  }
+
+  .ParticipantsTableRow__firstRow {
+    flex: 1 1 50%;
+    display: flex;
+  }
+  
+  .ParticipantsTableRow__secondRow {
+    flex: 1 1 50%;
+    display: flex;
+  }
+  
+  .ParticipantsTableRow__col {
+    display: flex;
+    align-self: center;
+    text-align: center;
+  }
+  
+  .ParticipantsTableRow__col__content {
+    flex: 1 1 50%;
+  }
+
+  .ParticipantsTableRow__col__update-delete {
+    flex: 1 1 50%;
+    margin: 0 1px;
+  }
+  
+}
+
+@media only screen and (min-width: 740px) {
+  .ParticipantsTableRow {
+    height: 120px;
+  }
+
+  .ParticipantsTableRow__firstRow {
+    flex: 1 1 55%;
+    display: flex;
+  }
+  
+  .ParticipantsTableRow__secondRow {
+    flex: 1 1 45%;
+    display: flex;
+  }
+  
+  .ParticipantsTableRow__col {
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+  }
+  
+  .ParticipantsTableRow__col__content {
+    flex: 1 1 25%;
+  }
+
+  .ParticipantsTableRow__col__content__name {
+    margin-left: 24px;
+  }
+
+  .ParticipantsTableRow__col__buttons {
+    flex-direction: column-reverse;
+    justify-content: flex-end
+  }
+  
+  .ParticipantsTableRow__col__update-delete {
+    margin-right: 16px;
+    flex: 1 1 5%;
+    justify-content: flex-end;
+  }
+
+  .ParticipantsTableRow__col__saveBtn, .ParticipantsTableRow__col__cancelBtn {
+    width: 100px;
+    height: 35px;
+    margin-left: 16px;
+    margin: 4px 25px;
+  }
+  .ParticipantsTableRow__col__input { 
+    margin-left: -17px;
+  }
+  
+}
+
+@media only screen and (min-width: 912px) {
+  .ParticipantsTableRow {
+    height: 80px;
+  }
+
+  .ParticipantsTableRow__firstRow {
+    flex: 1 1 55%;
+  
+    display: flex;
+    width: 100%;
+  }
+  
+  .ParticipantsTableRow__secondRow {
+    flex: 1 1 45%;
+  
+    display: flex;
+    width: 100%;
+    
+  }
+  
+  .ParticipantsTableRow__col {
+    display: flex;
+    align-self: center;
+  }
+  
+  .ParticipantsTableRow__col__content {
+    flex: 1 1 25%;
+  }
+  
+  .ParticipantsTableRow__col__content__email {
+    flex: 1 1 50%;
+  }
+  
+  .ParticipantsTableRow__col__content__phone {
+    flex: 1 1 20%;
+  }
+
+  .ParticipantsTableRow__col__buttons {
+    flex-direction: row;
+  }
+  
+  .ParticipantsTableRow__col__update-delete {
+    margin-right: 16px;
+    flex: 1 1 5%;
+  }
+
+  .ParticipantsTableRow__col__saveBtn, .ParticipantsTableRow__col__cancelBtn {
+    width: 100px;
+    height: 40px;
+    margin-left: 0px;
+    margin: 0px 16px 0px 0px;
+  }
+
+  .ParticipantsTableRow__col__input__email {
+    width: 240px;
+  }
+  
 }

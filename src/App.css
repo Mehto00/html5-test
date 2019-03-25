@@ -4,7 +4,25 @@ body {
 
 .contentWrapper {
   color: #5C5C5C;
-  max-width: 912px;
+  width: 320px;
   margin: 80px auto;
-  padding: 0 32px;
+}
+
+@media only screen and (min-width: 500px) {
+  .contentWrapper {
+    width: 500px;
+    padding: 0 16px;
+  }
+}
+
+@media only screen and (min-width: 740px) {
+  .contentWrapper {
+    width: 740px;
+  }
+}
+
+@media only screen and (min-width: 912px) {
+.contentWrapper {
+  min-width: 912px;
+  }
 }

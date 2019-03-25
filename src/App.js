@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Radium from 'radium';
 
 import './App.css';
 import participantsData from './assets/participantData.json'
@@ -148,4 +149,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Radium(App);
